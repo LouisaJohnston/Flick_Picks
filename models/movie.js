@@ -11,12 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.movie.belongsToMany(models.user, {through: "unwatched_movie"}, {through: "watched_movie"})
     }
   };
   movie.init({
     title: DataTypes.STRING,
-    imdbID: DataTypes.INTEGER
+    imdbID: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'movie',
