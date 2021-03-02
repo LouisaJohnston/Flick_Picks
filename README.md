@@ -122,7 +122,7 @@ Users will interact with this information to build their movie lists.
  POST | /movielog | Adds movies to the user's movielog via a form attached to search query results and the user's watchlist | Redirect to /movielog
  GET | /movielog/:id| Show details about a specific movie from the user's movielog | Render movielog/show.ejs
  PUT | /movielog/:id| Adds or updates a user comment on a movie from the user's movielog | Redirect to /watchlist/:id
- DELETE | /watchlist/:id | Removes a movie from the user's movielog | Redirect to /movielog
+ DELETE | /movielog/:id | Removes a movie from the user's movielog | Redirect to /movielog
 
  ## Stretch
   Method | URL | Functionality | View 
