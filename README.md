@@ -53,26 +53,32 @@ Users will interact with this information to build their movie lists.
 
 ### Thursday:
 - Finish views
-- MVP
+- Start movie choosing game
 
 ### Friday:
 - Debug refactor
 - Style views
+- Continue movie choosing game
 
 ### Saturday:
 - Style views
 - Stretch goals
+- Continue movie choosing game
 
 ### Sunday:
 - Stretch goals
 - Additional styling
+- Continue Movie choosing game
 
 ## Database ERDs
 ![Database ERDs](pics/ERD.png)
 
 ## Wireframes
-### On Load:
+### On Load/Homepage:
 ![On Load](pics/OnLoad.jpg)
+
+### Display Login:
+![Display Login](pics/DisplayLogin.jpg)
 
 ### Create Account:
 ![On Load](pics/CreateAccount.jpg)
@@ -98,7 +104,7 @@ Users will interact with this information to build their movie lists.
 ### Update Review:
 ![Update Review](pics/UpdateReview.jpg)
 
-
-
-
 ## RESTful Routing Chart
+| Method        | URL           | Functionality       | View          |
+| ------------- | ------------- | ------------------- | ------------- |
+|  GET          | /users/login  | Display login form  | Show 
