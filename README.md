@@ -8,7 +8,7 @@ In addition, as a stretch goal, users will be able to build a list of movies the
 
 
 ## MVP Goals
-Users will be able to login and interact with their profile consisting of movies they would like to watch as well as reviews and ratings of movies that they've already seen.
+Users will be able to login and interact with their profile consisting of movies they would like to watch, with the ability to comment on them, as well as reviews and ratings of movies that they've already seen.
 
 The database will inlcude models for movies and user input (comments, reviews, and ratings).
 
@@ -105,6 +105,29 @@ Users will interact with this information to build their movie lists.
 ![Update Review](pics/UpdateReview.jpg)
 
 ## RESTful Routing Chart
-| Method        | URL           | Functionality       | View          |
-| ------------- | ------------- | ------------------- | ------------- |
-|  GET          | /users/login  | Display login form  | Show 
+ Method | URL | Functionality | View 
+ --- | --- | --- | ---
+ GET | /users/new | Display create account form | Render users/new.ejs 
+ POST | /users | Creates a new account | Redirect to /users      
+ GET | /users/profile | Displays links to user watchlist and movielog | Render users/profile.ejs
+ GET | /users/login | Display login form | Render users/login.ejs
+ POST | /users/login | Receives and checks login information and stores the cookie if user information is a match  | Redirect to /users/profile or /users/login.ejs, depending on whether login info is a match
+ GET | /users/logout | Logs the user out and clears the cookie | Redirect to /users
+ GET | /watchlist | Displays all movies on the users watchlist | Show watchlist/index.ejs
+ POST | /watchlist | Adds movies to the watchlist via a form attached to search query results | Redirect to /watchlist
+ GET | /watchlist/:id| Show details about a specific movie on the user's watchlist | Render watchlist/show.ejs
+ PUT | /watchlist/:id| Adds or updates a comment on movie on the user's watchlist | Redirect to /watchlist/:id
+ DELETE | /watchlist/:id | Removes a movie from the user's watchlist | Redirect to /watchlist
+ GET | /movielog | Displays all movies from the user's movielog | Render movielog/index.ejs
+ POST | /movielog | Adds movies to the user's movielog via a form attached to search query results and the user's watchlist | Redirect to /movielog
+ GET | /movielog/:id| Show details about a specific movie from the user's movielog | Render movielog/show.ejs
+ PUT | /movielog/:id| Adds or updates a user comment on a movie from the user's movielog | Redirect to /watchlist/:id
+ DELETE | /watchlist/:id | Removes a movie from the user's movielog | Redirect to /movielog
+
+ ## Stretch
+  Method | URL | Functionality | View 
+ --- | --- | --- | ---
+ GET | /randomqueue | Displays all movies from the user's randomqueue | Render randomqueue/index.ejs
+ POST | /randomqueue | Adds movies to the user's moviequeue via a form attached to search query results and the user's watchlist | Redirect to /randomqueue
+ GET | /randomqueue/:id| Show details about a specific movie from the user's randomqueue | Render randomqueue/show.ejs
+ DELETE | /randomqueue/:id | Removes a movie from the user's randomqueue  | Redirect to /randomqueue 
