@@ -18,6 +18,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 /* Routes */
+app.get("/", (req, res) => {
+    res.render("index")
+})
+
+
+/* Controllers */
 app.use("/users", require("./controllers/userController"))
 
 const PORT = process.env.PORT || 3000
