@@ -6,7 +6,7 @@ const app = express();
 const rowdy = require("rowdy-logger")
 const cookieParser = require("cookie-parser")
 const db = require("./models")
-const cryptoJS = require("crypto-js");
+const cryptojs = require("crypto-js");
 const bcrypt = require('bcrypt');
 
 require("dotenv").config()
@@ -20,9 +20,12 @@ app.use(require("express-ejs-layouts"))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-const SECRET_STRING = process.env.SECRET_STRING;
+// const SECRET_STRING = process.env.SECRET_STRING;
 
 app.use(async (req, res, next) =>{
+    // const decryptedId = cryptojs.AES.decrypt(req.cookies.userId, SECRET_STRING)
+    // const decryptedIdString = decryptedId.toString(cryptojs.enc.Utf8)
+    // const user = await db.user.findByPk(decryptedIdString)
     const user = await db.user.findByPk(req.cookies.userId)
     res.locals.user = user
     next()
