@@ -8,7 +8,11 @@
     <title>Project 2</title>
 </head>
 <body>
-    <%- include("partials/navbar.ejs") %>
+    <% if(user){ %>
+        <%- include("./partials/loggedInNav.ejs") %>
+    <% } else { %>
+        <%- include("./partials/loggedOutNav.ejs") %>
+    <% } %>
     <%- body %>
 </body>
 </html>

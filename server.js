@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 /* Required Modules and Variables */
 const express = require("express")
 const app = express();
@@ -5,23 +7,31 @@ const rowdy = require("rowdy-logger")
 const cookieParser = require("cookie-parser")
 const db = require("./models")
 const cryptoJS = require("crypto-js");
+const bcrypt = require('bcrypt');
 
 require("dotenv").config()
 
 /* Middleware and Config */
 const rowdyRes = rowdy.begin(app)
 app.use(express.static("public"))
-app.use(require("morgan")("tiny"))
+app.use(require("morgan")("dev"))
 app.set("view engine", "ejs")
 app.use(require("express-ejs-layouts"))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+const SECRET_STRING = process.env.SECRET_STRING;
+
+app.use(async (req, res, next) =>{
+    const user = await db.user.findByPk(req.cookies.userId)
+    res.locals.user = user
+    next()
+})
+
 /* Routes */
 app.get("/", (req, res) => {
     res.render("index")
 })
-
 
 /* Controllers */
 app.use("/users", require("./controllers/userController"))
