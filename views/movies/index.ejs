@@ -1,0 +1,9 @@
+<h1>Your Favorite Movies</h1>
+
+<% movies.forEach(movie=> { %>
+    <div>
+        <h3>
+            <a href="/movies/<%= movie.title %>"><%= movie.title %></a>
+        </h3>
+    </div>
+<% }) %>
