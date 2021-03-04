@@ -21,6 +21,7 @@ app.use(cookieParser())
 
 const SECRET_STRING = process.env.SECRET_STRING;
 
+// Declare and decrypt user variable
 app.use(async (req, res, next) => {
     if (req.cookies.userId) {
         const decryptedUserId = cryptojs.AES.decrypt(req.cookies.userId, SECRET_STRING)

@@ -5,10 +5,12 @@ const cryptojs = require("crypto-js");
 
 const SECRET_STRING = process.env.SECRET_STRING;
 
+// Display create account form
 router.get("/new", (req, res) => {
   res.render("users/new");
 });
 
+// Create a new account, log them in
 router.post("/", async (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.redirect("/users/new")
@@ -31,6 +33,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Display login form
 router.get("/login", async (req, res) => {
   try {
     res.render("users/login");
@@ -39,6 +42,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
+// Receives and checks login information and stores the cookie if user information is a match
 router.post("/login", async (req, res) => {
   try {
     const user = await db.user.findOne({
@@ -58,11 +62,13 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Logs the user out and clears the cookie
 router.get("/logout", (req, res) => {
   res.clearCookie("userId");
   res.redirect("/");
 });
 
+// Displays links to user watchlist and movielog
 router.get("/profile", (req, res) => {
   try {
     if (res.locals.user) {

@@ -2,15 +2,12 @@
 
 <% movies.forEach(movie=> { %>
     <div>
-        <h3>
-            <a href="/movies/<%= movie.title %>"><%= movie.title %></a>
-        </h3>
+        <h3><%= movie.title %></h3>
     </div>
 <% }) %>
 
 <p>Search for a title to add to your list</p>
-<form action="/movies/results" method="GET">
+<form action="/movies/results" method="GET" target="_blank">
     <input type="text" name="search" />  
-  
     <input type="submit" />
   </form>
