@@ -1,11 +1,12 @@
 <h1>Search results</h1>
 <% movies.forEach(movie => { %>
-    <div>
+    <div id="results-container">
         <a href="/movies/show/<%= movie.imdbID %>" ><h3><%= movie.Title %></h3></a>
+        <img src="<%= movie.Poster %>">
         <form method="POST" action="/movies">
             <input type="hidden" name="title" value="<%= movie.Title %>">
             <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
-            <input type="submit" value="Add to favorite movies">
+            <input type="submit" value="Add to your watchlist">
         </form>
     </div>
 <% }) %>

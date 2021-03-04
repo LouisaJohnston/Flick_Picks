@@ -1,7 +1,20 @@
 
-<h1><%= movies.Title %></h1>
-<h3>Director: <%= movies.Director %></h3>
-<h3>Year: <%= movies.Year %></h3>
-<h3>Comment: </h3>
-
-<img src="<%= movies.Poster %>">
+<h1 class="page-header"><%= movies.Title %></h1>
+<div id="details-container">
+    <div id="image-details">
+        <img src="<%= movies.Poster %>">
+    </div>
+    <div id="text-details">
+        <h3>Director: <%= movies.Director %></h3>
+        <h3>Year: <%= movies.Year %></h3>
+        <h3>Starring: <%= movies.Actors %></h3>
+        <h3>Genre: <%= movies.Genre %></h3>
+        <h3>Awards: <%= movies.Awards %></h3>
+        <h3>Imdb User Rating: <%= movies.imdbRating %>/10</h3>
+        <form id="save-movie-button" method="POST" action="/movies">
+            <input type="hidden" name="title" value="<%= movies.Title %>">
+            <input type="hidden" name="imdbID" value="<%= movies.imdbID %>">
+            <input type="submit" value="Add to your watchlist">
+        </form>
+    </div>
+</div>

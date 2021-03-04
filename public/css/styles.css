@@ -20,7 +20,6 @@ nav a:hover {
 
 h1, h2, h3, h4, p, a {
     margin: 20px;
-    text-align: center;
 }
 
 h1, h2, h3 {
@@ -30,7 +29,38 @@ h1, h2, h3 {
 h4, p {
     color: darkslategrey;
 }
-
-form {
+/*** Lists ***/
+.list-container {
     text-align: center;
+    margin-top: 100px;
+}
+
+/*** Search Results ***/
+#results-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/*** Details Page ***/
+#details-container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    text-align: left;
+}
+
+#image-details {
+    margin-left: 100px;
+}
+
+#text-details {
+    margin-top: 50px;
+}
+
+#save-movie-button {
+    margin-left: 20px;
+}
+
+.page-header {
+    margin-left: 185px;
 }

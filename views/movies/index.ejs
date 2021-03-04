@@ -1,13 +1,17 @@
-<h1>Your Favorite Movies</h1>
+<div class="list-container">
+    <h1>Watchlist</h1>
 
-<% movies.forEach(movie=> { %>
-    <div>
-        <h3><%= movie.title %></h3>
-    </div>
-<% }) %>
+    <% movies.forEach(movie=> { %>
+        <div>
+            <h3><%= movie.title %></h3>
+            <img src="<%= movie.Poster %>">
+        </div>
+    <% }) %>
 
-<p>Search for a title to add to your list</p>
-<form action="/movies/results" method="GET" target="_blank">
-    <input type="text" name="search" />  
-    <input type="submit" />
-  </form>
+    <p>Search for a title to add to your list</p>
+    <form action="/movies/results" method="GET" target="_blank">
+        <input type="text" name="search" />  
+        <input type="submit" />
+    </form>
+
+</div>
