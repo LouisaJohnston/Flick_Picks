@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 
 /* Controllers */
 app.use("/users", require("./controllers/userController"))
-app.use("/movies", require("./controllers/movieController"))
+app.use("/watchlist", require("./controllers/watchlistController"))
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

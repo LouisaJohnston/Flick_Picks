@@ -12,9 +12,9 @@ router.get("/", async (req, res) => {
         try {
             const user = await db.user.findOne({
                 where: { id: res.locals.user.id },
-                include: db.movie
+                include: db.watchlist
             })
-            res.render("movies/index", { movies: user.dataValues.movies })
+            res.render("watchlist/index", { movies: user.dataValues.movies })
         } catch (err) {
             console.log(err)
         }
@@ -27,7 +27,7 @@ router.get("/results", async (req, res) => {
       const results = await axios.get(
         `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${req.query.search}`
       );
-      res.render("movies/results", { movies: results.data.Search });
+      res.render("watchlist/results", { movies: results.data.Search });
     } catch (err) {
       console.log(err);
     }
@@ -36,13 +36,13 @@ router.get("/results", async (req, res) => {
 // Add movie to watchlist
 router.post('/', async (req, res) => {
     try {
-        const [newMovie, created] = await db.movie.findOrCreate({
+        const [newMovie, created] = await db.watchlist.findOrCreate({
             where: { title: req.body.title },
             include: db.user
         })
         console.log(created);
         res.locals.user.addMovie(newMovie);
-        res.redirect("/movies")
+        res.redirect("/watchlist")
     } catch (err) {
         console.log(err)
     }
@@ -53,7 +53,7 @@ router.get("/show/:id", async (req, res) => {
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
-        res.render("movies/show", { movies: movie })
+        res.render("watchlist/show", { movies: movie })
     } catch (err) {
 
     }

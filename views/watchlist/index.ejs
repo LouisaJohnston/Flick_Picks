@@ -1,0 +1,16 @@
+<h1 class="page-header title-align-with-list">Watchlist</h1>
+
+<div class="list-container">
+    <% movies.forEach(movie=> { %>
+        <div>
+            <h3><%= movie.title %></h3>
+        </div>
+    <% }) %>
+    <div class="form-container form-align-with-list">
+        <p>Search for a title to add to your list</p>
+        <form class="align-with-list" action="/movies/results" method="GET" target="_blank">
+            <input type="text" name="search" />  
+            <input type="submit" />
+        </form>
+    </div>
+</div>

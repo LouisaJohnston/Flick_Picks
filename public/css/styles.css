@@ -22,17 +22,38 @@ h1, h2, h3, h4, p, a {
     margin: 20px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, li {
     color: #5A6FA8;
 }
 
 h4, p {
     color: darkslategrey;
 }
+
+.page-header {
+    margin-left: 185px;
+}
+
+.form-container {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
 /*** Lists ***/
 .list-container {
-    text-align: center;
-    margin-top: 100px;
+    padding-left: 300px;
+    margin-top: 50px;
+}
+
+.title-align-with-list {
+    padding-left: 80px;
+}
+
+.form-align-with-list {
+    padding-left: 30px;
+}
+
+.form-align-with-list > form {
+    padding-left: 20px;
 }
 
 /*** Search Results ***/
@@ -42,25 +63,21 @@ h4, p {
 }
 
 /*** Details Page ***/
-#details-container {
+.details-container {
     margin-top: 50px;
     display: grid;
     grid-template-columns: 1fr 3fr;
     text-align: left;
 }
 
-#image-details {
+.image-details {
     margin-left: 100px;
 }
 
-#text-details {
+.text-details {
     margin-top: 50px;
 }
 
-#save-movie-button {
+.save-movie-button {
     margin-left: 20px;
-}
-
-.page-header {
-    margin-left: 185px;
 }
