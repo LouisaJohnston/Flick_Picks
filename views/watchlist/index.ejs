@@ -5,13 +5,6 @@
         <div>
             <a href="/watchlist/movie/<%= watchlist.imdbID %>"><h3><%= watchlist.title %></h3></a>
             <p><% watchlist.comment %></p>
-            <a href="/watchlist/<%= watchlist."
-    
-            <form class="list-button" method="POST" action="/watchlist">
-                <input type="hidden" name="title" value="<%= movie.Title %>">
-                <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
-                <input type="submit" value="Remove your Watchlist">
-            </form>
         </div>
     <% }) %>
 </div>

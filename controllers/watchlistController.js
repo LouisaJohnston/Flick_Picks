@@ -55,7 +55,9 @@ router.post('/', async (req, res) => {
 // see details on movie from watchlist
 router.get("/movie/:id", async (req, res) => {
     try {
-        const watchlist = await db.watchlists.findByPk(req.params.id, { raw: true })
+        const watchlist = await db.watchlist.findOne({
+            
+        })
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
