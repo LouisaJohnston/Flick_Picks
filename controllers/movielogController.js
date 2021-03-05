@@ -4,7 +4,7 @@ const db = require("../models");
 
 const OMDB_API_KEY = process.env.OMDB_API_KEY;
 
-// Displays all movies on the users watchlist
+// Displays all movies on the users movielog
 router.get("/", async (req, res) => {
     if(!res.locals.user) {
         res.redirect("/users/login")
@@ -14,22 +14,22 @@ router.get("/", async (req, res) => {
                 where: { 
                     id: res.locals.user.id 
                 },
-                include: db.watchlist
+                include: db.movielog
             })
-            res.render("watchlist/index", { watchlists: user.dataValues.watchlists })
+            res.render( "movielog/index", { movielogs: user.dataValues.movielogs })
         } catch (err) {
             console.log(err)
         }
     }
 })
 
-// Displays results from search query on watchlist page
+// Displays results from search query on movielog page
 router.get("/results", async (req, res) => {
     try {
       const results = await axios.get(
         `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${req.query.search}`
       );
-      res.render("watchlist/results", { movies: results.data.Search });
+      res.render( "movielog/results", { movies: results.data.Search });
     } catch (err) {
       console.log(err);
     }
@@ -41,16 +41,16 @@ router.get("/show/:id", async (req, res) => {
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
-        res.render("watchlist/show", { movie: movie })
+        res.render( "movielog/show", { movie: movie })
     } catch (err) {
         console.log(err)
     }
 })
 
-// Add movie to watchlist
+// Add movie to movielog
 router.post('/', async (req, res) => {
     try {
-        const [newMovie, created] = await db.watchlist.findOrCreate({
+        const [newMovie, created] = await db.movielog.findOrCreate({
         where: { 
             imdbID: req.body.imdbID
         },
@@ -59,28 +59,28 @@ router.post('/', async (req, res) => {
         }
         })
         console.log(created);
-        res.locals.user.addWatchlist(newMovie);
-        res.redirect("/watchlist")
+        res.locals.user.addMovielog(newMovie);
+        res.redirect(" movielog")
     } catch (err) {
         console.log(err)
     }
 })
 
-// see details on movie from watchlist
+// see details on movie from movielog
 router.get("/movie/:id", async (req, res) => {
     try {
         const user = await db.user.findOne({
             where: { 
                 id: res.locals.user.id 
             },
-            include: db.watchlist
+            include: db.movielog
         })
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
         // console.log(`pokemon`)
         // console.log(user.dataValues)
-        res.render("watchlist/movie", { movie: movie, watchlist: user.dataValues.watchlists })
+        res.render( "movielog/movie", { movie: movie, movielog: user.dataValues.movielogs })
     } catch (err) {
         console.log (err)
     }
@@ -89,7 +89,7 @@ router.get("/movie/:id", async (req, res) => {
 // Update comment on a movie
 router.put("/movie/:id", async (req, res) => {
     try {
-        await db.watchlist.update({
+        await db.movielog.update({
             where: {imdbID: req.body.imdbID},
             defaults: {
                 comment: req.body.comment 
@@ -97,21 +97,21 @@ router.put("/movie/:id", async (req, res) => {
         })
         console.log("jabba")
         console.log(movieComment)
-        res.locals.user.setWatchlist(movieComment);
-        res.redirect(`/watchlist/movie/${req.params.id}`)
+        res.locals.user.setMovielog(movieComment);
+        res.redirect(`/movielog/movie/${req.params.id}`)
     } catch (err) {
         console.log(err)
     }
 })
 
-// Delete movie from Watchlist
+// Delete movie from movielog
 router.delete('/movie/:id', async (req, res) => {
     try {
-        const deletedMovie = await db.watchlist.delete({
+        const deletedMovie = await db.movielog.delete({
             where: {imdbID: req.body.imdbID}
         })
-        res.locals.user.removeWatchlist(deletedMovie);
-        res.redirect("/watchlist");
+        res.locals.user.removeMovielog(deletedMovie);
+        res.redirect("/movielog");
     } catch (err) {
         console.log(err)
     }

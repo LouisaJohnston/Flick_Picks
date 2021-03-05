@@ -1,0 +1,20 @@
+
+<h1 class="details-header"><%= movie.Title %></h1>
+<div class="details-container">
+    <div id="image-details">
+        <img src="<%= movie.Poster %>">
+    </div>
+    <div class="text-details">
+        <h3>Director: <%= movie.Director %></h3>
+        <h3>Year: <%= movie.Year %></h3>
+        <h3>Starring: <%= movie.Actors %></h3>
+        <h3>Genre: <%= movie.Genre %></h3>
+        <h3>Awards: <%= movie.Awards %></h3>
+        <h3>IMDb User Rating: <%= movie.imdbRating %>/10</h3>
+        <form class="save-movie-button" method="POST" action="/watchlist">
+            <input type="hidden" name="title" value="<%= movie.Title %>">
+            <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
+            <input type="submit" value="Add to your Movielog">
+        </form>
+    </div>
+</div>
