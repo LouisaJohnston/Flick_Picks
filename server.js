@@ -15,7 +15,7 @@ app.use(express.static("public"))
 app.use(require("morgan")("dev"))
 app.set("view engine", "ejs")
 app.use(require("express-ejs-layouts"))
-app.use(methodOverride('_method'))
+app.use(methodOverride("_method"))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 

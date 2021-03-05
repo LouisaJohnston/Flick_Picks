@@ -10,5 +10,20 @@
         <h3>Genre: <%= movie.Genre %></h3>
         <h3>Awards: <%= movie.Awards %></h3>
         <h3>IMDb User Rating: <%= movie.imdbRating %>/10</h3>
+        <h3>Your Comment: <%= watchlist.comment %></h3>
+        
+        <div class="update-holder">
+            <p>Update your comment:</p>
+            <form method="POST" action="/watchlist/movie/<%= watchlist.imdbID %>/?_method=PUT">
+                <input type="text" name="comment" value="<%= watchlist.comment %>"/>  
+                <input type="submit" value="Update" />
+            </form>
+        </div>
+
+        <div class="delete-holder">
+            <form method="POST" action="/watchlist/movie/<%= watchlist.imdbID %>/?_method=DELETE">
+                <input type="submit" value="Delete movie from your Watchlist" />
+            </form>
+        </div>
     </div>
 </div>
