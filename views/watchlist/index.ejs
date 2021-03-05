@@ -1,16 +1,25 @@
-<h1 class="page-header title-align-with-list">Watchlist</h1>
+<h1 class="list-header">Watchlist</h1>
 
 <div class="list-container">
-    <% movies.forEach(movie=> { %>
+    <% watchlists.forEach(watchlist => { %>
         <div>
-            <h3><%= movie.title %></h3>
+            <a href="/watchlist/movie/<%= watchlist.imdbID %>"><h3><%= watchlist.title %></h3></a>
+            <p><% watchlist.comment %></p>
+            <a href="/watchlist/<%= watchlist."
+    
+            <form class="list-button" method="POST" action="/watchlist">
+                <input type="hidden" name="title" value="<%= movie.Title %>">
+                <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
+                <input type="submit" value="Remove your Watchlist">
+            </form>
         </div>
     <% }) %>
-    <div class="form-container form-align-with-list">
-        <p>Search for a title to add to your list</p>
-        <form class="align-with-list" action="/movies/results" method="GET" target="_blank">
-            <input type="text" name="search" />  
-            <input type="submit" />
-        </form>
-    </div>
+</div>
+
+<div class="form-container form-align-with-list">
+    <p>Search for a title to add to your Watchlist</p>
+    <form class="align-with-list" action="/watchlist/results" method="GET" target="_blank">
+        <input type="text" name="search" />  
+        <input type="submit" />
+    </form>
 </div>

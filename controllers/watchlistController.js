@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
                 where: { id: res.locals.user.id },
                 include: db.watchlist
             })
-            res.render("watchlist/index", { movies: user.dataValues.movies })
+            res.render("watchlist/index", { watchlists: user.dataValues.watchlists })
         } catch (err) {
             console.log(err)
         }
@@ -37,25 +37,43 @@ router.get("/results", async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const [newMovie, created] = await db.watchlist.findOrCreate({
-            where: { title: req.body.title },
-            include: db.user
+        where: { 
+            title: req.body.title 
+        },
+        defaults: {
+            imdbID: req.body.imdbID
+        }
         })
         console.log(created);
-        res.locals.user.addMovie(newMovie);
+        res.locals.user.addWatchlist(newMovie);
         res.redirect("/watchlist")
     } catch (err) {
         console.log(err)
     }
 })
 
+// see details on movie from watchlist
+router.get("/movie/:id", async (req, res) => {
+    try {
+        const watchlist = await db.watchlists.findByPk(req.params.id, { raw: true })
+        const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
+        const response = await axios.get(movieApiUrl)
+        const movie = response.data
+        res.render("watchlist/movie", { movie: movie, watchlist: watchlist.dataValues.watchlist })
+    } catch (err) {
+        console.log (err)
+    }
+})
+
+// see details on search result
 router.get("/show/:id", async (req, res) => {
     try {
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
-        res.render("watchlist/show", { movies: movie })
+        res.render("watchlist/show", { movie: movie })
     } catch (err) {
-
+        console.log(err)
     }
 })
 

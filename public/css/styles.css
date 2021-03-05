@@ -1,21 +1,7 @@
+/*** Site-Wide ***/
 body {
     background-color: #F1EDE4;
     margin: 0;
-}
-
-nav {
-    padding: 10px;;
-}
-
-nav a {
-    color: green;
-    text-decoration: none;
-    padding-top: 5px!important;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-nav a:hover {
-    color: orangered;
 }
 
 h1, h2, h3, h4, p, a {
@@ -30,18 +16,51 @@ h4, p {
     color: darkslategrey;
 }
 
-.page-header {
-    margin-left: 185px;
-}
-
 .form-container {
     margin-top: 50px;
     margin-bottom: 20px;
 }
+
+/*** Nav ***/
+nav {
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+nav a {
+    color: #64AE57;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: orangered;
+}
+
+.site-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8em;
+    color: #5A6FA8;
+    font-weight: bold;
+}
+
+.greeter {
+    color: #64AE57;
+    padding-top: 5px!important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
 /*** Lists ***/
+.list-header {
+    text-align: center;
+}
+
 .list-container {
-    padding-left: 300px;
     margin-top: 50px;
+    text-align: center;
+
 }
 
 .title-align-with-list {
@@ -49,11 +68,8 @@ h4, p {
 }
 
 .form-align-with-list {
-    padding-left: 30px;
-}
-
-.form-align-with-list > form {
-    padding-left: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /*** Search Results ***/
@@ -63,6 +79,10 @@ h4, p {
 }
 
 /*** Details Page ***/
+.details-header {
+    margin-left: 185px;
+}
+
 .details-container {
     margin-top: 50px;
     display: grid;
@@ -80,4 +100,30 @@ h4, p {
 
 .save-movie-button {
     margin-left: 20px;
+}
+
+.list-button {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+/*** About Page ***/
+#about-holder {
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+#about-holder p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#about-holder a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: #64AE57;
+}
+
+#about-holder a:hover {
+    color: orangered;
 }

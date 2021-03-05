@@ -68,19 +68,5 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// Displays links to user watchlist and movielog
-router.get("/profile", (req, res) => {
-  try {
-    if (res.locals.user) {
-      res.render("users/profile");
-    } else {
-      res.redirect("/users/login");
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-
 
 module.exports = router;
