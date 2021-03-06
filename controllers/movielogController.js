@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
                 },
                 include: db.movielog
             })
-            res.render( "movielog/index", { movielogs: user.dataValues.movielogs })
+            res.render("movielog/index", { movielogs: user.dataValues.movielogs })
         } catch (err) {
             console.log(err)
         }
@@ -29,7 +29,7 @@ router.get("/results", async (req, res) => {
       const results = await axios.get(
         `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${req.query.search}`
       );
-      res.render( "movielog/results", { movies: results.data.Search });
+      res.render("movielog/results", { movies: results.data.Search });
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +41,7 @@ router.get("/show/:id", async (req, res) => {
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
-        res.render( "movielog/show", { movie: movie })
+        res.render("movielog/show", { movie: movie })
     } catch (err) {
         console.log(err)
     }
@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
         })
         console.log(created);
         res.locals.user.addMovielog(newMovie);
-        res.redirect(" movielog")
+        res.redirect("/movielog")
     } catch (err) {
         console.log(err)
     }
@@ -75,6 +75,7 @@ router.get("/movie/:id", async (req, res) => {
             },
             include: db.movielog
         })
+        console.log(user.dataValues.movielogs)
         const movieApiUrl =  `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${req.params.id}`
         const response = await axios.get(movieApiUrl)
         const movie = response.data
@@ -89,15 +90,15 @@ router.get("/movie/:id", async (req, res) => {
 // Update comment on a movie
 router.put("/movie/:id", async (req, res) => {
     try {
-        await db.movielog.update({
+        const movieReview = await db.movielog.update({
             where: {imdbID: req.body.imdbID},
             defaults: {
-                comment: req.body.comment 
+                rating: req.body.rating,
+                review: req.body.review 
             }
         })
         console.log("jabba")
-        console.log(movieComment)
-        res.locals.user.setMovielog(movieComment);
+        res.locals.user.setMovielog(movieReview);
         res.redirect(`/movielog/movie/${req.params.id}`)
     } catch (err) {
         console.log(err)

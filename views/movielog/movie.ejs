@@ -1,6 +1,6 @@
 <h1 class="details-header"><%= movie.Title %></h1>
 <div class="details-container">
-    <div id="image-details">
+    <div class="image-details">
         <img src="<%= movie.Poster %>">
     </div>
     <div class="text-details">
@@ -10,23 +10,23 @@
         <h3>Genre: <%= movie.Genre %></h3>
         <h3>Awards: <%= movie.Awards %></h3>
         <h3>IMDb User Rating: <%= movie.imdbRating %>/10</h3>
-        <h3>Your Rating: <%= movielog.rating %>/5</h3>
-        <h3>Your Review: <%= movielog.rating %></h3>
+        <h3>Your Rating: <%= movielog.dataValues.rating %>/5</h3>
+        <h3>Your Review: <%= movielog.dataValues.review %></h3>
         
-        <div class="update-holder">
+        <div class="update-holder button-holder">
             <p>Update your rating & review:</p>
-            <form method="POST" action="/movielog/movie/<%= movielog.imdbID %>/?_method=PUT">
+            <form method="POST" action="/movielog/movie/<%= movielog.dataValues.imdbID %>/?_method=PUT">
                 <label>Rating</label>
-                <input type="number" name="comment" value="<%= movielog.rating %>" min="0" max="5"/>
+                <input type="number" name="rating" value="<%= movielog.dataValues.rating %>" min="0" max="5"/>
                 
                 <label>Review</label>
-                <input type="text" name="comment" value="<%= movielog.review  %>"/>
+                <input type="text" name="review" value="<%= movielog.dataValues.review  %>"/>
                 <input type="submit" value="Update" />
             </form>
         </div>
 
-        <div class="delete-holder">
-            <form method="POST" action="/movielog/movie/<%= movielog.imdbID %>/?_method=DELETE">
+        <div class="button-holder">
+            <form method="POST" action="/movielog/movie/<%= movielog.dataValues.imdbID %>/?_method=DELETE">
                 <input type="submit" value="Delete movie from your Movielog" />
             </form>
         </div>

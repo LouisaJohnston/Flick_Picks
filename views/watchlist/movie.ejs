@@ -1,6 +1,6 @@
 <h1 class="details-header"><%= movie.Title %></h1>
 <div class="details-container">
-    <div id="image-details">
+    <div class="image-details">
         <img src="<%= movie.Poster %>">
     </div>
     <div class="text-details">
@@ -10,19 +10,27 @@
         <h3>Genre: <%= movie.Genre %></h3>
         <h3>Awards: <%= movie.Awards %></h3>
         <h3>IMDb User Rating: <%= movie.imdbRating %>/10</h3>
-        <h3>Your Comment: <%= watchlist.comment %></h3>
+        <h3>Your Comment: <%= watchlist.dataValues.comment %></h3>
         
-        <div class="update-holder">
+        <div class="update-holder button-holder">
             <p>Update your comment:</p>
-            <form method="POST" action="/watchlist/movie/<%= watchlist.imdbID %>/?_method=PUT">
-                <input type="text" name="comment" value="<%= watchlist.comment %>"/>  
+            <form method="POST" action="/watchlist/movie/<%= watchlist.dataValues.imdbID %>?_method=PUT">
+                <input type="text" name="comment" value="<%= watchlist.dataValues.comment %>"/>  
                 <input type="submit" value="Update" />
             </form>
         </div>
 
-        <div class="delete-holder">
-            <form method="POST" action="/watchlist/movie/<%= watchlist.imdbID %>/?_method=DELETE">
+        <div class="button-holder">
+            <form method="POST" action="/watchlist/movie/<%= watchlist.dataValues.imdbID %>?_method=DELETE">
                 <input type="submit" value="Delete movie from your Watchlist" />
+            </form>
+        </div>
+
+        <div class="button-holder">
+            <form class="save-movie-button" method="POST" action="/movielog">
+                <input type="hidden" name="title" value="<%= movie.Title %>">
+                <input type="hidden" name="imdbID" value="<%= movie.imdbID %>">
+                <input type="submit" value="Add to your Movielog">
             </form>
         </div>
     </div>

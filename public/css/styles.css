@@ -57,6 +57,10 @@ nav a:hover {
     text-align: center;
 }
 
+.page-descriptor {
+    text-align: center;
+}
+
 .list-container {
     margin-top: 50px;
     text-align: center;
@@ -94,17 +98,22 @@ nav a:hover {
     margin-left: 100px;
 }
 
-.text-details {
-    margin-top: 50px;
-}
+/* .text-details {
+    margin-top: 10px;
+} */
 
 .save-movie-button {
     margin-left: 20px;
 }
 
-.list-button {
+.button-holder {
     margin-left: 20px;
     margin-top: 20px;
+    text-align: left;
+}
+
+.update-holder {
+    margin-top: 30px;
 }
 
 /*** About Page ***/
