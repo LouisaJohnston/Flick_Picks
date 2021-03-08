@@ -5,7 +5,6 @@
     <% watchlists.forEach(watchlist => { %>
         <div>
             <a href="/watchlist/movie/<%= watchlist.imdbID %>"><h3><%= watchlist.title %></h3></a>
-            <p><% watchlist.comment %></p>
         </div>
     <% }) %>
 </div>

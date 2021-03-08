@@ -13,6 +13,8 @@ Users will be able to login and interact with their profile consisting of movies
 The database will inlcude models for movies and user input (comments, reviews, and ratings).
 
 ## Stretch Goals
+I was unfortunately unable to reach my stretch goals as a result of losing a large bulk of project week to a miscommunication regarding my ERDs that involved substantial restructuring.
+
 Users will be able to build a list of 20 movies and use a virtual d20 die to select which movie on the list they will watch. The list is filled out by the user conducting a separate d20 die roll and choosing a movie according to the roll's corresponding criteria (eg. rolling a 12 might mean you have to choose a movie within the sci-fi genre
 
 ## Extra Stretch
@@ -115,14 +117,14 @@ Users will interact with this information to build their movie lists.
  GET | /users/logout | Logs the user out and clears the cookie | Redirect to /users
  GET | /watchlist | Displays all movies on the users watchlist | Show watchlist/index.ejs
  POST | /watchlist | Adds movies to the watchlist via a form attached to search query results | Redirect to /watchlist
- GET | /watchlist/:id| Show details about a specific movie on the user's watchlist | Render watchlist/show.ejs
- PUT | /watchlist/:id| Adds or updates a comment on movie on the user's watchlist | Redirect to /watchlist/:id
- DELETE | /watchlist/:id | Removes a movie from the user's watchlist | Redirect to /watchlist
+ GET | /watchlist/movie/:id| Show details about a specific movie on the user's watchlist | Render watchlist/show.ejs
+ PUT | /watchlist/movie/:id| Adds or updates a comment on movie on the user's watchlist | Redirect to /watchlist/:id
+ DELETE | /watchlist/movie/:id | Removes a movie from the user's watchlist | Redirect to /watchlist
  GET | /movielog | Displays all movies from the user's movielog | Render movielog/index.ejs
  POST | /movielog | Adds movies to the user's movielog via a form attached to search query results and the user's watchlist | Redirect to /movielog
- GET | /movielog/:id| Show details about a specific movie from the user's movielog | Render movielog/show.ejs
- PUT | /movielog/:id| Adds or updates a user comment on a movie from the user's movielog | Redirect to /watchlist/:id
- DELETE | /movielog/:id | Removes a movie from the user's movielog | Redirect to /movielog
+ GET | /movielog/movie/:id| Show details about a specific movie from the user's movielog | Render movielog/show.ejs
+ PUT | /movielog/movie/:id| Adds or updates a user comment on a movie from the user's movielog | Redirect to /watchlist/:id
+ DELETE | /movielog/movie/:id | Removes a movie from the user's movielog | Redirect to /movielog
 
  ## Stretch
   Method | URL | Functionality | View 
