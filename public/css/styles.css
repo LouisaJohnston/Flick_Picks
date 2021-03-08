@@ -8,7 +8,7 @@ h1, h2, h3, h4, p, a {
     margin: 20px;
 }
 
-h1, h2, h3, li {
+h1, h2, h3 {
     color: #5A6FA8;
 }
 
@@ -19,6 +19,11 @@ h4, p {
 .form-container {
     margin-top: 50px;
     margin-bottom: 20px;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5A6FA8;
 }
 
 /*** Nav ***/
@@ -64,8 +69,22 @@ nav a:hover {
 .list-container {
     margin-top: 50px;
     text-align: center;
-
 }
+
+.list-container a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-container h3 {
+    color: #64AE57;
+}
+
+.list-container h3:hover {
+    color: orangered;
+}
+
 
 .title-align-with-list {
     padding-left: 80px;
@@ -77,33 +96,48 @@ nav a:hover {
 }
 
 /*** Search Results ***/
+#search-page {
+    text-align: center;
+}
+
 #results-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
+#result {
+    height: 560px;
+}
+
+#result a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+#result h3 {
+    color: #64AE57;
+}
+
+#result h3:hover {
+    color: orangered;
+}
+
 /*** Details Page ***/
 .details-header {
-    margin-left: 185px;
+    text-align: center;
 }
 
 .details-container {
-    margin-top: 50px;
+    margin-top: 10px;
+    margin-left: 10%;
     display: grid;
     grid-template-columns: 1fr 3fr;
     text-align: left;
 }
 
-.image-details {
-    margin-left: 100px;
-}
-
-/* .text-details {
-    margin-top: 10px;
-} */
-
-.save-movie-button {
-    margin-left: 20px;
+.text-details {
+    margin-left: 5%;
 }
 
 .button-holder {
@@ -114,6 +148,11 @@ nav a:hover {
 
 .update-holder {
     margin-top: 30px;
+    text-align: left;
+}
+
+.save-movie-button {
+    margin-left: 20px;
 }
 
 /*** About Page ***/
@@ -135,4 +174,16 @@ nav a:hover {
 
 #about-holder a:hover {
     color: orangered;
+}
+
+/*** Login Page ***/
+#login-holder {
+    text-align: center;
+    margin-top: 150px;
+}
+
+/*** Login Page ***/
+#signup-holder {
+    text-align: center;
+    margin-top: 150px;
 }

@@ -1,7 +1,13 @@
-<h1>Search results</h1>
-<% movies.forEach(movie => { %>
+<div id="search-page">
+    <h1>Search results</h1>
     <div id="results-container">
-        <a href="/watchlist/show/<%= movie.imdbID %>" ><h3><%= movie.Title %></h3></a>
-        <img src="<%= movie.Poster %>">
+        <% movies.forEach(movie => { %>
+            <div id="result">
+                <a href="/watchlist/show/<%= movie.imdbID %>" >
+                    <h3><%= movie.Title %></h3>
+                    <img src="<%= movie.Poster %>">
+                </a>
+            </div>
+        <% }) %>
     </div>
-<% }) %>
+</div>
