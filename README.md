@@ -1,4 +1,4 @@
-# Project 2
+# Flick Picks
 
 ## Overview
 This app will allow users to login and search the Omdb API to create watch-lists of movies they would like to see as well as logs of movies they have already seen.
